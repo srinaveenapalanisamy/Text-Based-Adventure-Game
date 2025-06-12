@@ -1,0 +1,47 @@
+import java.util.Scanner;
+
+public class TextAdventureGame {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String command;
+        boolean hasKey = false;
+        boolean gameRunning = true;
+
+        System.out.println("You are standing in front of a mysterious house.");
+        System.out.println("Commands: go inside | look around | quit");
+
+        while (gameRunning) {
+            System.out.print("> ");
+            command = scanner.nextLine().toLowerCase();
+
+            switch (command) {
+                case "look around":
+                    System.out.println("You find a key on the ground.");
+                    hasKey = true;
+                    break;
+
+                case "go inside":
+                    if (hasKey) {
+                        System.out.println("You use the key to open the door and go inside.");
+                        System.out.println("You found a treasure chest! You win!");
+                        gameRunning = false;
+                    } else {
+                        System.out.println("The door is locked. You need a key.");
+                    }
+                    break;
+
+                case "quit":
+                    System.out.println("Thanks for playing!");
+                    gameRunning = false;
+                    break;
+
+                default:
+                    System.out.println("I don't understand that command.");
+                    break;
+            }
+        }
+
+        scanner.close();
+    }
+}
